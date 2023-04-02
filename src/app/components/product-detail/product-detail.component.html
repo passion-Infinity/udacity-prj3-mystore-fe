@@ -1,0 +1,19 @@
+<div class="product-detail-container">
+    <div class="left">
+        <img [style]="{width: '250px', height: '250px'}" src="{{product.url}}" alt="">
+    </div>
+    <div class="right">
+        <h3 class="right-item">{{product.name}}</h3>
+        <p class="right-item">${{product.price}}</p>
+        <p class="right-item">{{product.description}}</p>
+        <div class="right-item" style="margin-bottom: 10px;">
+            <p-inputNumber [(ngModel)]="quantity" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+                [min]="1">
+            </p-inputNumber>
+        </div>
+        <div class="right-item">
+            <p-button label="Add to cart" icon="pi pi-check" (click)="onAddCart(product)"></p-button>
+        </div>
+        <p class="back" routerLink="/">&#8592;Back to product list</p>
+    </div>
+</div>

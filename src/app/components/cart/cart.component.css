@@ -1,0 +1,26 @@
+.cart-container {
+    margin: auto;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.cart-item {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 30px;
+}
+
+.cart-item-text {
+    font-weight: 500;
+    margin-bottom: 10px;
+}

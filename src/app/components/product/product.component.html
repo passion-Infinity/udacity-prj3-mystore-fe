@@ -1,0 +1,15 @@
+<p-card header="{{product.name}}" subheader="${{product.price}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
+    <ng-template pTemplate="header">
+        <img [style]="{width: '300px', height: '300px', cursor: 'pointer'}" alt="Card" src="{{product.url}}"
+            (click)="goToDetail()">
+    </ng-template>
+    <p>{{product.description}}</p>
+    <ng-template pTemplate="footer">
+        <div style="margin-bottom: 10px;">
+            <p-inputNumber [(ngModel)]="quantity" mode="decimal" [showButtons]="true" inputId="minmax-buttons"
+                [min]="1">
+            </p-inputNumber>
+        </div>
+        <p-button label="Add to cart" icon="pi pi-check" (click)="onAddCart(product)"></p-button>
+    </ng-template>
+</p-card>

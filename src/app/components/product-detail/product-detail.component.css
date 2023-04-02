@@ -1,0 +1,16 @@
+.product-detail-container {
+    padding: 30px 20px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.right-item {
+    margin-bottom: 15px;
+}
+
+.back {
+    cursor: pointer;
+    color: rgb(91, 136, 233);
+}

@@ -1,0 +1,57 @@
+<div class="cart-container">
+
+    <div class="cart-product">
+        <h2 style="margin-bottom: 10px;">Cart Product</h2>
+        <div *ngFor="let cartItem of cartList" class="cart-item">
+            <div class="cart-item-left">
+                <img style="width: 100px; height: 100px" src="{{cartItem.product.url}}" />
+            </div>
+            <div class="cart-item-right">
+                <p class="cart-item-text">{{cartItem.product.name}}</p>
+                <p class="cart-item-text">${{cartItem.product.price}}</p>
+                <div class="">
+                    <p-inputNumber mode="decimal" [(ngModel)]="cartItem.quantity" [showButtons]="true"
+                        inputId="minmax-buttons" [min]="0" (onInput)="onChangeQuantit(cartItem)">
+                    </p-inputNumber>
+                </div>
+            </div>
+        </div>
+        <h2>Total: {{total}}</h2>
+    </div>
+    <div class="cart-info">
+        <h2 style="margin-bottom: 10px;">Personal Information</h2>
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+            <div class="field">
+                <label for="fullname" class="label">Full Name</label>
+                <input id="fullname" type="text" pInputText [(ngModel)]="fullName" required=""
+                    [ngModelOptions]="{standalone: true}" />
+                <br />
+                <small *ngIf="fullName === ''" id="fullname-help" class="p-error block">fullname is not
+                    available.</small>
+            </div>
+            <div class="field">
+                <label for="address" class="label">Address</label>
+                <input id="address" type="text" pInputText [(ngModel)]="address" required=""
+                    [ngModelOptions]="{standalone: true}" />
+                <br />
+                <small *ngIf="address === ''" id="address-help" class="p-error block">address is not
+                    available.</small>
+            </div>
+            <div class="field">
+                <label for="creditCard" class="label">Credit card number</label>
+                <input id="creditCard" placeholder="10 digits" type="text" pInputText [(ngModel)]="creditCard"
+                    required="" minlength="10" maxlength="10" [ngModelOptions]="{standalone: true}" />
+                <br />
+                <small *ngIf="creditCard === '' || (creditCard && creditCard.length!== 10)" id="address-help"
+                    class="p-error block">Credit
+                    card number is not
+                    available.</small>
+            </div>
+            <div class="cart-footer">
+                <p-button label="Submit" type="submit"
+                    [disabled]="!(fullName && address && creditCard) || (creditCard && creditCard.length!== 10) || !cartList.length"></p-button>
+            </div>
+        </form>
+    </div>
+
+</div>

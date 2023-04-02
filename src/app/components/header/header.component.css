@@ -1,0 +1,25 @@
+.header {
+    background-color: rgb(65, 149, 245);
+}
+
+.header-content {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 500px;
+    margin: auto;
+    color: #fff;
+}
+
+.menu {
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu-item {
+    cursor: pointer;
+}
