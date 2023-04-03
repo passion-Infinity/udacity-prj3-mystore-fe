@@ -16,22 +16,22 @@
                 </div>
             </div>
         </div>
-        <h2>Total: {{total}}</h2>
+        <h2>Total: ${{total}}</h2>
     </div>
     <div class="cart-info">
         <h2 style="margin-bottom: 10px;">Personal Information</h2>
         <form #form="ngForm" (ngSubmit)="onSubmit()">
             <div class="field">
                 <label for="fullname" class="label">Full Name</label>
-                <input id="fullname" type="text" pInputText [(ngModel)]="fullName" required=""
-                    [ngModelOptions]="{standalone: true}" />
+                <input id="fullname" placeholder="Enter fullname" type="text" pInputText [(ngModel)]="fullName"
+                    required="" [ngModelOptions]="{standalone: true}" />
                 <br />
                 <small *ngIf="fullName === ''" id="fullname-help" class="p-error block">fullname is not
                     available.</small>
             </div>
             <div class="field">
                 <label for="address" class="label">Address</label>
-                <input id="address" type="text" pInputText [(ngModel)]="address" required=""
+                <input id="address" placeholder="Enter address" type="text" pInputText [(ngModel)]="address" required=""
                     [ngModelOptions]="{standalone: true}" />
                 <br />
                 <small *ngIf="address === ''" id="address-help" class="p-error block">address is not
@@ -39,17 +39,17 @@
             </div>
             <div class="field">
                 <label for="creditCard" class="label">Credit card number</label>
-                <input id="creditCard" placeholder="10 digits" type="text" pInputText [(ngModel)]="creditCard"
-                    required="" minlength="10" maxlength="10" [ngModelOptions]="{standalone: true}" />
+                <input id="creditCard" placeholder="Enter 10 digits" type="text" pInputText [(ngModel)]="creditCard"
+                    required="" minlength="10" maxlength="10" [ngModelOptions]="{standalone: true}"
+                    (ngModelChange)="validateCreditCard()" />
                 <br />
-                <small *ngIf="creditCard === '' || (creditCard && creditCard.length!== 10)" id="address-help"
-                    class="p-error block">Credit
+                <small *ngIf="creditCard === '' || creditError" id="address-help" class="p-error block">Credit
                     card number is not
                     available.</small>
             </div>
             <div class="cart-footer">
                 <p-button label="Submit" type="submit"
-                    [disabled]="!(fullName && address && creditCard) || (creditCard && creditCard.length!== 10) || !cartList.length"></p-button>
+                    [disabled]="!(fullName && address && creditCard) || creditError || !cartList.length"></p-button>
             </div>
         </form>
     </div>

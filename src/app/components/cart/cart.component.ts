@@ -16,6 +16,8 @@ export class CartComponent implements OnInit {
   creditCard: string | any = null;
   cartList: CartItem[] = [];
   total: number = 0;
+  regexCredit = new RegExp(/^[0-9]{10}$/);
+  creditError = false;
 
   constructor(private cartService: CartService, private checkoutService: CheckoutService, private router: Router) { }
 
@@ -39,6 +41,15 @@ export class CartComponent implements OnInit {
   onChangeQuantit(cartItem: CartItem) {
     this.cartService.updateCartItem(cartItem);
     this.total = Math.round(this.cartService.getTotal() * 100) / 100;
+  }
+
+  validateCreditCard() {
+    const matches = this.regexCredit.test(this.creditCard);
+    if (!matches) {
+      this.creditError = true;
+    } else {
+      this.creditError = false;
+    }
   }
 
 }
